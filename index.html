@@ -9731,7 +9731,7 @@ src="https://www.facebook.com/tr?id=1497972024708962&ev=PageView&noscript=1"
                 
                   <a
                     
-                      href="/products/insole"
+                      href="/"
                     
                     class="button button--primary button--full-width"
                   >CLAIM OFFER</a>
@@ -10424,7 +10424,7 @@ src="https://www.facebook.com/tr?id=1497972024708962&ev=PageView&noscript=1"
                           <a href='/products/massage'>
                             <img
                              
-                              src="/ruk_logo.png"
+                              src="/ruk_logo_1.png"
                               alt=""
                               loading="lazy"
                               width="773"
@@ -11005,4 +11005,459 @@ function _typeof(t){return(_typeof="function"==typeof Symbol&&"symbol"==typeof S
       replaceDollarInDOM();
     });
   </script>
+
+  <script>
+ $(document).ready(function () {
+    // Static URL mapping for each variant combination
+    // Format: "color-size-quantity" -> "url"
+    const variantUrls = {
+        // Orange variants
+        "orange-M 5 / W 6-1": "/products/orange-massage-insoles-size-5-6-single-pack",
+        "orange-M 5 / W 6-2": "/products/orange-massage-insoles-size-5-6-double-pack",
+        "orange-M 5 / W 6-3": "/products/orange-massage-insoles-size-5-6-triple-pack",
+        "orange-M 5 / W 6-5": "/products/orange-massage-insoles-size-5-6-family-pack",
+        
+        "orange-M 6 / W 7-1": "/products/orange-massage-insoles-size-6-7-single-pack",
+        "orange-M 6 / W 7-2": "/products/orange-massage-insoles-size-6-7-double-pack",
+        "orange-M 6 / W 7-3": "/products/orange-massage-insoles-size-6-7-triple-pack",
+        "orange-M 6 / W 7-5": "/products/orange-massage-insoles-size-6-7-family-pack",
+        
+        "orange-M 7 / W 8-1": "/products/orange-massage-insoles-size-7-8-single-pack",
+        "orange-M 7 / W 8-2": "/products/orange-massage-insoles-size-7-8-double-pack",
+        "orange-M 7 / W 8-3": "/products/orange-massage-insoles-size-7-8-triple-pack",
+        "orange-M 7 / W 8-5": "/products/orange-massage-insoles-size-7-8-family-pack",
+        
+        "orange-M 8 / W 9-1": "/products/orange-massage-insoles-size-8-9-single-pack",
+        "orange-M 8 / W 9-2": "/products/orange-massage-insoles-size-8-9-double-pack",
+        "orange-M 8 / W 9-3": "/products/orange-massage-insoles-size-8-9-triple-pack",
+        "orange-M 8 / W 9-5": "/products/orange-massage-insoles-size-8-9-family-pack",
+        
+        "orange-M 9 / W 10-1": "/products/orange-massage-insoles-size-9-10-single-pack",
+        "orange-M 9 / W 10-2": "/products/orange-massage-insoles-size-9-10-double-pack",
+        "orange-M 9 / W 10-3": "/products/orange-massage-insoles-size-9-10-triple-pack",
+        "orange-M 9 / W 10-5": "/products/orange-massage-insoles-size-9-10-family-pack",
+        
+        "orange-M 10 / W 11-1": "/products/orange-massage-insoles-size-10-11-single-pack",
+        "orange-M 10 / W 11-2": "/products/orange-massage-insoles-size-10-11-double-pack",
+        "orange-M 10 / W 11-3": "/products/orange-massage-insoles-size-10-11-triple-pack",
+        "orange-M 10 / W 11-5": "/products/orange-massage-insoles-size-10-11-family-pack",
+        
+        "orange-M 11 / W 12-1": "/products/orange-massage-insoles-size-11-12-single-pack",
+        "orange-M 11 / W 12-2": "/products/orange-massage-insoles-size-11-12-double-pack",
+        "orange-M 11 / W 12-3": "/products/orange-massage-insoles-size-11-12-triple-pack",
+        "orange-M 11 / W 12-5": "/products/orange-massage-insoles-size-11-12-family-pack",
+        
+        "orange-M 12 / W 13-1": "/products/orange-massage-insoles-size-12-13-single-pack",
+        "orange-M 12 / W 13-2": "/products/orange-massage-insoles-size-12-13-double-pack",
+        "orange-M 12 / W 13-3": "/products/orange-massage-insoles-size-12-13-triple-pack",
+        "orange-M 12 / W 13-5": "/products/orange-massage-insoles-size-12-13-family-pack",
+        
+        "orange-M 13 / W 14-1": "/products/orange-massage-insoles-size-13-14-single-pack",
+        "orange-M 13 / W 14-2": "/products/orange-massage-insoles-size-13-14-double-pack",
+        "orange-M 13 / W 14-3": "/products/orange-massage-insoles-size-13-14-triple-pack",
+        "orange-M 13 / W 14-5": "/products/orange-massage-insoles-size-13-14-family-pack",
+        
+        "orange-M 14 / W 15-1": "/products/orange-massage-insoles-size-14-15-single-pack",
+        "orange-M 14 / W 15-2": "/products/orange-massage-insoles-size-14-15-double-pack",
+        "orange-M 14 / W 15-3": "/products/orange-massage-insoles-size-14-15-triple-pack",
+        "orange-M 14 / W 15-5": "/products/orange-massage-insoles-size-14-15-family-pack",
+        
+        "orange-M 15 / W 16-1": "/products/orange-massage-insoles-size-15-16-single-pack",
+        "orange-M 15 / W 16-2": "/products/orange-massage-insoles-size-15-16-double-pack",
+        "orange-M 15 / W 16-3": "/products/orange-massage-insoles-size-15-16-triple-pack",
+        "orange-M 15 / W 16-5": "/products/orange-massage-insoles-size-15-16-family-pack",
+        
+        // Black variants
+        "black-M 5 / W 6-1": "/products/black-massage-insoles-size-5-6-single-pack",
+        "black-M 5 / W 6-2": "/products/black-massage-insoles-size-5-6-double-pack",
+        "black-M 5 / W 6-3": "/products/black-massage-insoles-size-5-6-triple-pack",
+        "black-M 5 / W 6-5": "/products/black-massage-insoles-size-5-6-family-pack",
+        
+        "black-M 6 / W 7-1": "/products/black-massage-insoles-size-6-7-single-pack",
+        "black-M 6 / W 7-2": "/products/black-massage-insoles-size-6-7-double-pack",
+        "black-M 6 / W 7-3": "/products/black-massage-insoles-size-6-7-triple-pack",
+        "black-M 6 / W 7-5": "/products/black-massage-insoles-size-6-7-family-pack",
+        
+        "black-M 7 / W 8-1": "/products/black-massage-insoles-size-7-8-single-pack",
+        "black-M 7 / W 8-2": "/products/black-massage-insoles-size-7-8-double-pack",
+        "black-M 7 / W 8-3": "/products/black-massage-insoles-size-7-8-triple-pack",
+        "black-M 7 / W 8-5": "/products/black-massage-insoles-size-7-8-family-pack",
+        
+        "black-M 8 / W 9-1": "/products/black-massage-insoles-size-8-9-single-pack",
+        "black-M 8 / W 9-2": "/products/black-massage-insoles-size-8-9-double-pack",
+        "black-M 8 / W 9-3": "/products/black-massage-insoles-size-8-9-triple-pack",
+        "black-M 8 / W 9-5": "/products/black-massage-insoles-size-8-9-family-pack",
+        
+        "black-M 9 / W 10-1": "/products/black-massage-insoles-size-9-10-single-pack",
+        "black-M 9 / W 10-2": "/products/black-massage-insoles-size-9-10-double-pack",
+        "black-M 9 / W 10-3": "/products/black-massage-insoles-size-9-10-triple-pack",
+        "black-M 9 / W 10-5": "/products/black-massage-insoles-size-9-10-family-pack",
+        
+        "black-M 10 / W 11-1": "/products/black-massage-insoles-size-10-11-single-pack",
+        "black-M 10 / W 11-2": "/products/black-massage-insoles-size-10-11-double-pack",
+        "black-M 10 / W 11-3": "/products/black-massage-insoles-size-10-11-triple-pack",
+        "black-M 10 / W 11-5": "/products/black-massage-insoles-size-10-11-family-pack",
+        
+        "black-M 11 / W 12-1": "/products/black-massage-insoles-size-11-12-single-pack",
+        "black-M 11 / W 12-2": "/products/black-massage-insoles-size-11-12-double-pack",
+        "black-M 11 / W 12-3": "/products/black-massage-insoles-size-11-12-triple-pack",
+        "black-M 11 / W 12-5": "/products/black-massage-insoles-size-11-12-family-pack",
+        
+        "black-M 12 / W 13-1": "/products/black-massage-insoles-size-12-13-single-pack",
+        "black-M 12 / W 13-2": "/products/black-massage-insoles-size-12-13-double-pack",
+        "black-M 12 / W 13-3": "/products/black-massage-insoles-size-12-13-triple-pack",
+        "black-M 12 / W 13-5": "/products/black-massage-insoles-size-12-13-family-pack",
+        
+        "black-M 13 / W 14-1": "/products/black-massage-insoles-size-13-14-single-pack",
+        "black-M 13 / W 14-2": "/products/black-massage-insoles-size-13-14-double-pack",
+        "black-M 13 / W 14-3": "/products/black-massage-insoles-size-13-14-triple-pack",
+        "black-M 13 / W 14-5": "/products/black-massage-insoles-size-13-14-family-pack",
+        
+        "black-M 14 / W 15-1": "/products/black-massage-insoles-size-14-15-single-pack",
+        "black-M 14 / W 15-2": "/products/black-massage-insoles-size-14-15-double-pack",
+        "black-M 14 / W 15-3": "/products/black-massage-insoles-size-14-15-triple-pack",
+        "black-M 14 / W 15-5": "/products/black-massage-insoles-size-14-15-family-pack",
+        
+        "black-M 15 / W 16-1": "/products/black-massage-insoles-size-15-16-single-pack",
+        "black-M 15 / W 16-2": "/products/black-massage-insoles-size-15-16-double-pack",
+        "black-M 15 / W 16-3": "/products/black-massage-insoles-size-15-16-triple-pack",
+        "black-M 15 / W 16-5": "/products/black-massage-insoles-size-15-16-family-pack",
+        
+        // Grey variants
+        "grey-M 5 / W 6-1": "/products/grey-massage-insoles-size-5-6-single-pack",
+        "grey-M 5 / W 6-2": "/products/grey-massage-insoles-size-5-6-double-pack",
+        "grey-M 5 / W 6-3": "/products/grey-massage-insoles-size-5-6-triple-pack",
+        "grey-M 5 / W 6-5": "/products/grey-massage-insoles-size-5-6-family-pack",
+        
+        "grey-M 6 / W 7-1": "/products/grey-massage-insoles-size-6-7-single-pack",
+        "grey-M 6 / W 7-2": "/products/grey-massage-insoles-size-6-7-double-pack",
+        "grey-M 6 / W 7-3": "/products/grey-massage-insoles-size-6-7-triple-pack",
+        "grey-M 6 / W 7-5": "/products/grey-massage-insoles-size-6-7-family-pack",
+        
+        "grey-M 7 / W 8-1": "/products/grey-massage-insoles-size-7-8-single-pack",
+        "grey-M 7 / W 8-2": "/products/grey-massage-insoles-size-7-8-double-pack",
+        "grey-M 7 / W 8-3": "/products/grey-massage-insoles-size-7-8-triple-pack",
+        "grey-M 7 / W 8-5": "/products/grey-massage-insoles-size-7-8-family-pack",
+        
+        "grey-M 8 / W 9-1": "/products/grey-massage-insoles-size-8-9-single-pack",
+        "grey-M 8 / W 9-2": "/products/grey-massage-insoles-size-8-9-double-pack",
+        "grey-M 8 / W 9-3": "/products/grey-massage-insoles-size-8-9-triple-pack",
+        "grey-M 8 / W 9-5": "/products/grey-massage-insoles-size-8-9-family-pack",
+        
+        "grey-M 9 / W 10-1": "/products/grey-massage-insoles-size-9-10-single-pack",
+        "grey-M 9 / W 10-2": "/products/grey-massage-insoles-size-9-10-double-pack",
+        "grey-M 9 / W 10-3": "/products/grey-massage-insoles-size-9-10-triple-pack",
+        "grey-M 9 / W 10-5": "/products/grey-massage-insoles-size-9-10-family-pack",
+        
+        "grey-M 10 / W 11-1": "/products/grey-massage-insoles-size-10-11-single-pack",
+        "grey-M 10 / W 11-2": "/products/grey-massage-insoles-size-10-11-double-pack",
+        "grey-M 10 / W 11-3": "/products/grey-massage-insoles-size-10-11-triple-pack",
+        "grey-M 10 / W 11-5": "/products/grey-massage-insoles-size-10-11-family-pack",
+        
+        "grey-M 11 / W 12-1": "/products/grey-massage-insoles-size-11-12-single-pack",
+        "grey-M 11 / W 12-2": "/products/grey-massage-insoles-size-11-12-double-pack",
+        "grey-M 11 / W 12-3": "/products/grey-massage-insoles-size-11-12-triple-pack",
+        "grey-M 11 / W 12-5": "/products/grey-massage-insoles-size-11-12-family-pack",
+        
+        "grey-M 12 / W 13-1": "/products/grey-massage-insoles-size-12-13-single-pack",
+        "grey-M 12 / W 13-2": "/products/grey-massage-insoles-size-12-13-double-pack",
+        "grey-M 12 / W 13-3": "/products/grey-massage-insoles-size-12-13-triple-pack",
+        "grey-M 12 / W 13-5": "/products/grey-massage-insoles-size-12-13-family-pack",
+        
+        "grey-M 13 / W 14-1": "/products/grey-massage-insoles-size-13-14-single-pack",
+        "grey-M 13 / W 14-2": "/products/grey-massage-insoles-size-13-14-double-pack",
+        "grey-M 13 / W 14-3": "/products/grey-massage-insoles-size-13-14-triple-pack",
+        "grey-M 13 / W 14-5": "/products/grey-massage-insoles-size-13-14-family-pack",
+        
+        "grey-M 14 / W 15-1": "/products/grey-massage-insoles-size-14-15-single-pack",
+        "grey-M 14 / W 15-2": "/products/grey-massage-insoles-size-14-15-double-pack",
+        "grey-M 14 / W 15-3": "/products/grey-massage-insoles-size-14-15-triple-pack",
+        "grey-M 14 / W 15-5": "/products/grey-massage-insoles-size-14-15-family-pack",
+        
+        "grey-M 15 / W 16-1": "/products/grey-massage-insoles-size-15-16-single-pack",
+        "grey-M 15 / W 16-2": "/products/grey-massage-insoles-size-15-16-double-pack",
+        "grey-M 15 / W 16-3": "/products/grey-massage-insoles-size-15-16-triple-pack",
+        "grey-M 15 / W 16-5": "/products/grey-massage-insoles-size-15-16-family-pack"
+    };
+
+    // Price configuration for different pack quantities
+    const packPricing = {
+        1: { 
+            price: 29.99, 
+            comparePrice: 42.00,
+            savings: 12.01,
+            discount: '29%'
+        },
+        2: { 
+            price: 39.99, 
+            comparePrice: 84.00,
+            savings: 44.01,
+            discount: '52%'
+        },
+        3: { 
+            price: 49.99, 
+            comparePrice: 126.00,
+            savings: 76.01,
+            discount: '60%'
+        },
+        5: { 
+            price: 59.99, 
+            comparePrice: 210.00,
+            savings: 150.01,
+            discount: '71%'
+        }
+    };
+    
+    // Function to get selected color
+    function getSelectedColor() {
+        const colorInput = $('input[name="COLOR"]:checked');
+        return colorInput.length ? colorInput.val().toLowerCase() : 'orange';
+    }
+    
+    // Function to get selected size
+    function getSelectedSize() {
+        const sizeInput = $('input[name="SHOE SIZE"]:checked');
+        if (sizeInput.length) {
+            const sizeValue = sizeInput.val();
+            // Extract the size portion (e.g., "M 5 / W 6" from "M 5 / W 6 | UK 4 | EU 35-36")
+            const sizeMatch = sizeValue.match(/^([^|]+)/);
+            return sizeMatch ? sizeMatch[1].trim() : '';
+        }
+        return '';
+    }
+    
+    // Function to get selected quantity/pack
+    function getSelectedQuantity() {
+        const quantityInput = $('input[name="quantity"]:checked');
+        return quantityInput.length ? parseInt(quantityInput.val()) : 2; // Default to 2 if none selected
+    }
+    
+    // Function to get the redirect URL for current selection
+    function getRedirectUrl() {
+        const color = getSelectedColor();
+        const size = getSelectedSize();
+        const quantity = getSelectedQuantity();
+        
+        const variantKey = `${color}-${size}-${quantity}`;
+        const url = variantUrls[variantKey];
+        
+        if (!url) {
+            console.warn('No URL found for variant:', variantKey);
+            console.warn('Available variants:', Object.keys(variantUrls));
+            return null;
+        }
+        
+        return url;
+    }
+    
+    // Function to update pricing display
+    function updatePricing() {
+        const quantity = getSelectedQuantity();
+        const pricing = packPricing[quantity];
+        
+        if (!pricing) return;
+        
+        // Update main pricing elements
+        $('.quantity-break__price span').text(`£${pricing.price}`);
+        $('.quantity-break__compare-price span').text(`£${pricing.comparePrice}`);
+        
+        // Update savings display
+        $('.quantity-break__caption span').text(`£${pricing.savings}`);
+        
+        // Update discount percentage
+        $('.quantity-break__benefit').text(`SAVE ${pricing.discount}`);
+        
+        // Update individual quantity break displays
+        $('input[name="quantity"]').each(function() {
+            const packQuantity = parseInt($(this).val());
+            const packPricing = packPricing[packQuantity];
+            if (packPricing) {
+                const label = $(this).next('label');
+                label.find('.quantity-break__price span').text(`£${packPricing.price}`);
+                label.find('.quantity-break__compare-price span').text(`£${packPricing.comparePrice}`);
+                label.find('.quantity-break__caption span').text(`£${packPricing.savings}`);
+                label.find('.quantity-break__benefit').text(`SAVE ${packPricing.discount}`);
+            }
+        });
+    }
+    
+    // Function to handle the redirect
+    function handleRedirect() {
+        const selectedSize = getSelectedSize();
+        
+        if (!selectedSize) {
+            // If no size selected, scroll to size selector and highlight it
+            $("html, body").animate({
+                scrollTop: $("variant-selects").offset()?.top - 70 || 0
+            }, 200);
+            shakeButton();
+            return false;
+        }
+        
+        const redirectUrl = getRedirectUrl();
+        
+        if (!redirectUrl) {
+            console.error('Could not determine redirect URL for current selection');
+            alert('Sorry, this variant combination is not available.');
+            return false;
+        }
+        
+        // Log for debugging
+        console.log('Redirecting to:', redirectUrl);
+        console.log('Selected variants:', {
+            color: getSelectedColor(),
+            size: selectedSize,
+            quantity: getSelectedQuantity()
+        });
+        
+        // Redirect to the specific URL
+        window.location.href = redirectUrl;
+        
+        return false; // Prevent default form submission
+    }
+    
+    // Update pricing on page load
+    updatePricing();
+    
+    // Update pricing when quantity selection changes
+    $('input[name="quantity"]').on('change', function() {
+        updatePricing();
+        updateVariantId();
+    });
+    
+    // Update variant ID when color or size changes
+    $('input[name="COLOR"], input[name="SHOE SIZE"]').on('change', function() {
+        updateVariantId();
+    });
+    
+    // Function to update the hidden variant ID field
+    function updateVariantId() {
+        const color = getSelectedColor();
+        const selectedSizeInput = $('input[name="SHOE SIZE"]:checked');
+        
+        if (selectedSizeInput.length) {
+            const sizeValue = selectedSizeInput.val();
+            
+            // Find the matching variant from the JSON data
+            const variantData = JSON.parse($('script[data-has-variants="false"]').text() || '[]');
+            const matchingVariant = variantData.find(variant => 
+                variant.option1.toLowerCase() === color && 
+                variant.option2 === sizeValue
+            );
+            
+            if (matchingVariant) {
+                $('.product-variant-id').val(matchingVariant.id);
+            }
+        }
+    }
+    
+    // Override the existing Add to Cart button functionality
+    $('#ProductSubmitButton-template--25105630658893__main').off('click').on('click', function(e) {
+        e.preventDefault();
+        return handleRedirect();
+    });
+    
+    // Also handle sticky add to cart button
+    $('.sticky-atc__button button').off('click').on('click', function(e) {
+        e.preventDefault();
+        return handleRedirect();
+    });
+    
+    // Handle disabled button clicks (when no size is selected)
+    $(document).off("click", ".sticky-atc__button.disabled, .product-form__buttons.disabled").on("click", ".sticky-atc__button.disabled, .product-form__buttons.disabled", function (e) {
+        e.preventDefault();
+        $("html, body").animate({
+            scrollTop: $("variant-selects").offset()?.top - 70 || 0
+        }, 200);
+        shakeButton();
+        return false;
+    });
+    
+    // Update button text and state based on size selection
+    const opt_name = "SHOE SIZE";
+    const sizeOptions = $('input[name="'+opt_name+'"]');
+    const addToCartButton = $('.product-form__buttons');
+    
+    // Check if size is selected and update button accordingly
+    function updateButtonState() {
+        if (sizeOptions.is(':checked')) {
+            addToCartButton.removeClass('disabled');
+            $('.sticky-atc__button').removeClass('disabled');
+            $('.product-form__buttons button span:first-child').text("Add to cart");
+            $('.sticky-atc__button button span:first-child').text("Add to cart");
+        } else {
+            addToCartButton.addClass('disabled');
+            $('.sticky-atc__button').addClass('disabled');
+            $('.product-form__buttons button span:first-child').text("Select SHOE SIZE");
+            $('.sticky-atc__button button span:first-child').text("Select SHOE SIZE");
+        }
+    }
+    
+    // Update button state when size selection changes
+    sizeOptions.on('change', function() {
+        setTimeout(updateButtonState, 100);
+    });
+    
+    // Initialize button state
+    updateButtonState();
+    
+    // Helper function for the shake animation (assuming it exists)
+    if (typeof shakeButton !== 'function') {
+        window.shakeButton = function() {
+            let pills = document.querySelectorAll(".custom-pills label");
+            pills.forEach((pill) => {
+                pill.classList.add("glowing");
+            });
+            setTimeout(() => {
+                pills.forEach((pill) => {
+                    pill.classList.remove("glowing");
+                });
+            }, 4000);
+        };
+    }
+    
+    // Debug function to test current selection
+    window.testCurrentVariant = function() {
+        const color = getSelectedColor();
+        const size = getSelectedSize();
+        const quantity = getSelectedQuantity();
+        const variantKey = `${color}-${size}-${quantity}`;
+        const url = getRedirectUrl();
+        
+        console.log('Current selection:');
+        console.log('Color:', color);
+        console.log('Size:', size);
+        console.log('Quantity:', quantity);
+        console.log('Variant key:', variantKey);
+        console.log('Redirect URL:', url);
+        
+        if (!url) {
+            console.log('⚠️ No URL mapping found for this variant combination');
+        }
+    };
+    
+    // Helper function to generate all variant keys (for development)
+    window.generateVariantKeys = function() {
+        const colors = ['orange', 'black', 'grey'];
+        const sizes = [
+            'M 5 / W 6', 'M 6 / W 7', 'M 7 / W 8', 'M 8 / W 9', 'M 9 / W 10',
+            'M 10 / W 11', 'M 11 / W 12', 'M 12 / W 13', 'M 13 / W 14', 
+            'M 14 / W 15', 'M 15 / W 16'
+        ];
+        const quantities = [1, 2, 3, 5];
+        
+        const keys = [];
+        colors.forEach(color => {
+            sizes.forEach(size => {
+                quantities.forEach(quantity => {
+                    keys.push(`"${color}-${size}-${quantity}": "/products/${color}-massage-insoles-size-${size.replace('M ', '').replace(' / W ', '-')}-${quantity === 1 ? 'single' : quantity === 2 ? 'double' : quantity === 3 ? 'triple' : 'family'}-pack"`);
+                });
+            });
+        });
+        
+        console.log('Generated variant mappings:');
+        console.log(keys.join(',\n'));
+    };
+});   
+</script>
 </html>

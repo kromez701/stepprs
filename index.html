@@ -10994,7 +10994,7 @@ function _typeof(t){return(_typeof="function"==typeof Symbol&&"symbol"==typeof S
       let node;
       while ((node = walker.nextNode())) {
         if (node.textContent.includes("$")) {
-          node.textContent = node.textContent.replace(/\€/g, "£");
+          node.textContent = node.textContent.replace(/\$/g, "£");
         }
       }
 

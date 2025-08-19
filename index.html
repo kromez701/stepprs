@@ -11006,5 +11006,475 @@ function _typeof(t){return(_typeof="function"==typeof Symbol&&"symbol"==typeof S
     });
   </script>
 
+
+  <script>
+  
+    // Enhanced Product Form Handler with Variant-Based Redirects
+(function($) {
+    'use strict';
+    
+    // Configuration
+    const CONFIG = {
+        prices: {
+            1: 29.99,  // 1 Pack
+            2: 39.99,  // 2 Pack  
+            3: 49.99,  // 3 Pack
+            5: 59.99   // 5 Pack (Best Deal)
+        },
+        currency: '£',
+        redirectUrls: {
+            // ORANGE VARIANTS
+            // UK 4 (EU 35-36, M 5 / W 6)
+            'orange-uk4-1': '/checkout/orange-uk4-1pack',
+            'orange-uk4-2': '/checkout/orange-uk4-2pack',
+            'orange-uk4-3': '/checkout/orange-uk4-3pack',
+            'orange-uk4-5': '/checkout/orange-uk4-5pack',
+            
+            // UK 5 (EU 37-38, M 6 / W 7)
+            'orange-uk5-1': '/checkout/orange-uk5-1pack',
+            'orange-uk5-2': '/checkout/orange-uk5-2pack',
+            'orange-uk5-3': '/checkout/orange-uk5-3pack',
+            'orange-uk5-5': '/checkout/orange-uk5-5pack',
+            
+            // UK 6 (EU 39-40, M 7 / W 8)
+            'orange-uk6-1': '/checkout/orange-uk6-1pack',
+            'orange-uk6-2': '/checkout/orange-uk6-2pack',
+            'orange-uk6-3': '/checkout/orange-uk6-3pack',
+            'orange-uk6-5': '/checkout/orange-uk6-5pack',
+            
+            // UK 7 (EU 41-42, M 8 / W 9)
+            'orange-uk7-1': '/checkout/orange-uk7-1pack',
+            'orange-uk7-2': '/checkout/orange-uk7-2pack',
+            'orange-uk7-3': '/checkout/orange-uk7-3pack',
+            'orange-uk7-5': '/checkout/orange-uk7-5pack',
+            
+            // UK 8 (EU 43-44, M 9 / W 10)
+            'orange-uk8-1': '/checkout/orange-uk8-1pack',
+            'orange-uk8-2': '/checkout/orange-uk8-2pack',
+            'orange-uk8-3': '/checkout/orange-uk8-3pack',
+            'orange-uk8-5': '/checkout/orange-uk8-5pack',
+            
+            // UK 9 (EU 45-46, M 10 / W 11)
+            'orange-uk9-1': '/checkout/orange-uk9-1pack',
+            'orange-uk9-2': '/checkout/orange-uk9-2pack',
+            'orange-uk9-3': '/checkout/orange-uk9-3pack',
+            'orange-uk9-5': '/checkout/orange-uk9-5pack',
+            
+            // UK 10 (EU 47-48, M 11 / W 12)
+            'orange-uk10-1': '/checkout/orange-uk10-1pack',
+            'orange-uk10-2': '/checkout/orange-uk10-2pack',
+            'orange-uk10-3': '/checkout/orange-uk10-3pack',
+            'orange-uk10-5': '/checkout/orange-uk10-5pack',
+            
+            // UK 11 (EU 49-50, M 12 / W 13)
+            'orange-uk11-1': '/checkout/orange-uk11-1pack',
+            'orange-uk11-2': '/checkout/orange-uk11-2pack',
+            'orange-uk11-3': '/checkout/orange-uk11-3pack',
+            'orange-uk11-5': '/checkout/orange-uk11-5pack',
+            
+            // UK 12 (EU 51-52, M 13 / W 14)
+            'orange-uk12-1': '/checkout/orange-uk12-1pack',
+            'orange-uk12-2': '/checkout/orange-uk12-2pack',
+            'orange-uk12-3': '/checkout/orange-uk12-3pack',
+            'orange-uk12-5': '/checkout/orange-uk12-5pack',
+            
+            // UK 13 (EU 53-54, M 14 / W 15)
+            'orange-uk13-1': '/checkout/orange-uk13-1pack',
+            'orange-uk13-2': '/checkout/orange-uk13-2pack',
+            'orange-uk13-3': '/checkout/orange-uk13-3pack',
+            'orange-uk13-5': '/checkout/orange-uk13-5pack',
+            
+            // UK 14 (EU 55-56, M 15 / W 16)
+            'orange-uk14-1': '/checkout/orange-uk14-1pack',
+            'orange-uk14-2': '/checkout/orange-uk14-2pack',
+            'orange-uk14-3': '/checkout/orange-uk14-3pack',
+            'orange-uk14-5': '/checkout/orange-uk14-5pack',
+            
+            // BLACK VARIANTS
+            // UK 4 (EU 35-36, M 5 / W 6)
+            'black-uk4-1': '/checkout/black-uk4-1pack',
+            'black-uk4-2': '/checkout/black-uk4-2pack',
+            'black-uk4-3': '/checkout/black-uk4-3pack',
+            'black-uk4-5': '/checkout/black-uk4-5pack',
+            
+            // UK 5 (EU 37-38, M 6 / W 7)
+            'black-uk5-1': '/checkout/black-uk5-1pack',
+            'black-uk5-2': '/checkout/black-uk5-2pack',
+            'black-uk5-3': '/checkout/black-uk5-3pack',
+            'black-uk5-5': '/checkout/black-uk5-5pack',
+            
+            // UK 6 (EU 39-40, M 7 / W 8)
+            'black-uk6-1': '/checkout/black-uk6-1pack',
+            'black-uk6-2': '/checkout/black-uk6-2pack',
+            'black-uk6-3': '/checkout/black-uk6-3pack',
+            'black-uk6-5': '/checkout/black-uk6-5pack',
+            
+            // UK 7 (EU 41-42, M 8 / W 9)
+            'black-uk7-1': '/checkout/black-uk7-1pack',
+            'black-uk7-2': '/checkout/black-uk7-2pack',
+            'black-uk7-3': '/checkout/black-uk7-3pack',
+            'black-uk7-5': '/checkout/black-uk7-5pack',
+            
+            // UK 8 (EU 43-44, M 9 / W 10)
+            'black-uk8-1': '/checkout/black-uk8-1pack',
+            'black-uk8-2': '/checkout/black-uk8-2pack',
+            'black-uk8-3': '/checkout/black-uk8-3pack',
+            'black-uk8-5': '/checkout/black-uk8-5pack',
+            
+            // UK 9 (EU 45-46, M 10 / W 11)
+            'black-uk9-1': '/checkout/black-uk9-1pack',
+            'black-uk9-2': '/checkout/black-uk9-2pack',
+            'black-uk9-3': '/checkout/black-uk9-3pack',
+            'black-uk9-5': '/checkout/black-uk9-5pack',
+            
+            // UK 10 (EU 47-48, M 11 / W 12)
+            'black-uk10-1': '/checkout/black-uk10-1pack',
+            'black-uk10-2': '/checkout/black-uk10-2pack',
+            'black-uk10-3': '/checkout/black-uk10-3pack',
+            'black-uk10-5': '/checkout/black-uk10-5pack',
+            
+            // UK 11 (EU 49-50, M 12 / W 13)
+            'black-uk11-1': '/checkout/black-uk11-1pack',
+            'black-uk11-2': '/checkout/black-uk11-2pack',
+            'black-uk11-3': '/checkout/black-uk11-3pack',
+            'black-uk11-5': '/checkout/black-uk11-5pack',
+            
+            // UK 12 (EU 51-52, M 13 / W 14)
+            'black-uk12-1': '/checkout/black-uk12-1pack',
+            'black-uk12-2': '/checkout/black-uk12-2pack',
+            'black-uk12-3': '/checkout/black-uk12-3pack',
+            'black-uk12-5': '/checkout/black-uk12-5pack',
+            
+            // UK 13 (EU 53-54, M 14 / W 15)
+            'black-uk13-1': '/checkout/black-uk13-1pack',
+            'black-uk13-2': '/checkout/black-uk13-2pack',
+            'black-uk13-3': '/checkout/black-uk13-3pack',
+            'black-uk13-5': '/checkout/black-uk13-5pack',
+            
+            // UK 14 (EU 55-56, M 15 / W 16)
+            'black-uk14-1': '/checkout/black-uk14-1pack',
+            'black-uk14-2': '/checkout/black-uk14-2pack',
+            'black-uk14-3': '/checkout/black-uk14-3pack',
+            'black-uk14-5': '/checkout/black-uk14-5pack',
+            
+            // GREY VARIANTS
+            // UK 4 (EU 35-36, M 5 / W 6)
+            'grey-uk4-1': '/checkout/grey-uk4-1pack',
+            'grey-uk4-2': '/checkout/grey-uk4-2pack',
+            'grey-uk4-3': '/checkout/grey-uk4-3pack',
+            'grey-uk4-5': '/checkout/grey-uk4-5pack',
+            
+            // UK 5 (EU 37-38, M 6 / W 7)
+            'grey-uk5-1': '/checkout/grey-uk5-1pack',
+            'grey-uk5-2': '/checkout/grey-uk5-2pack',
+            'grey-uk5-3': '/checkout/grey-uk5-3pack',
+            'grey-uk5-5': '/checkout/grey-uk5-5pack',
+            
+            // UK 6 (EU 39-40, M 7 / W 8)
+            'grey-uk6-1': '/checkout/grey-uk6-1pack',
+            'grey-uk6-2': '/checkout/grey-uk6-2pack',
+            'grey-uk6-3': '/checkout/grey-uk6-3pack',
+            'grey-uk6-5': '/checkout/grey-uk6-5pack',
+            
+            // UK 7 (EU 41-42, M 8 / W 9)
+            'grey-uk7-1': '/checkout/grey-uk7-1pack',
+            'grey-uk7-2': '/checkout/grey-uk7-2pack',
+            'grey-uk7-3': '/checkout/grey-uk7-3pack',
+            'grey-uk7-5': '/checkout/grey-uk7-5pack',
+            
+            // UK 8 (EU 43-44, M 9 / W 10)
+            'grey-uk8-1': '/checkout/grey-uk8-1pack',
+            'grey-uk8-2': '/checkout/grey-uk8-2pack',
+            'grey-uk8-3': '/checkout/grey-uk8-3pack',
+            'grey-uk8-5': '/checkout/grey-uk8-5pack',
+            
+            // UK 9 (EU 45-46, M 10 / W 11)
+            'grey-uk9-1': '/checkout/grey-uk9-1pack',
+            'grey-uk9-2': '/checkout/grey-uk9-2pack',
+            'grey-uk9-3': '/checkout/grey-uk9-3pack',
+            'grey-uk9-5': '/checkout/grey-uk9-5pack',
+            
+            // UK 10 (EU 47-48, M 11 / W 12)
+            'grey-uk10-1': '/checkout/grey-uk10-1pack',
+            'grey-uk10-2': '/checkout/grey-uk10-2pack',
+            'grey-uk10-3': '/checkout/grey-uk10-3pack',
+            'grey-uk10-5': '/checkout/grey-uk10-5pack',
+            
+            // UK 11 (EU 49-50, M 12 / W 13)
+            'grey-uk11-1': '/checkout/grey-uk11-1pack',
+            'grey-uk11-2': '/checkout/grey-uk11-2pack',
+            'grey-uk11-3': '/checkout/grey-uk11-3pack',
+            'grey-uk11-5': '/checkout/grey-uk11-5pack',
+            
+            // UK 12 (EU 51-52, M 13 / W 14)
+            'grey-uk12-1': '/checkout/grey-uk12-1pack',
+            'grey-uk12-2': '/checkout/grey-uk12-2pack',
+            'grey-uk12-3': '/checkout/grey-uk12-3pack',
+            'grey-uk12-5': '/checkout/grey-uk12-5pack',
+            
+            // UK 13 (EU 53-54, M 14 / W 15)
+            'grey-uk13-1': '/checkout/grey-uk13-1pack',
+            'grey-uk13-2': '/checkout/grey-uk13-2pack',
+            'grey-uk13-3': '/checkout/grey-uk13-3pack',
+            'grey-uk13-5': '/checkout/grey-uk13-5pack',
+            
+            // UK 14 (EU 55-56, M 15 / W 16)
+            'grey-uk14-1': '/checkout/grey-uk14-1pack',
+            'grey-uk14-2': '/checkout/grey-uk14-2pack',
+            'grey-uk14-3': '/checkout/grey-uk14-3pack',
+            'grey-uk14-5': '/checkout/grey-uk14-5pack',
+            
+            // Default fallback
+            'default': '/cart'
+        }
+    };
+    
+    // State management
+    let selectedVariants = {
+        color: 'Orange', // Default from HTML
+        size: null,
+        pack: 2 // Default from HTML (quantity2 is checked)
+    };
+    
+    // Initialize on document ready
+    $(document).ready(function() {
+        initializeVariantHandler();
+        updatePriceDisplay();
+        updateQuantityBreakPrices();
+    });
+    
+    function initializeVariantHandler() {
+        // Handle color selection
+        $('input[name="COLOR"]').on('change', function() {
+            if (this.checked) {
+                selectedVariants.color = $(this).val();
+                console.log('Color selected:', selectedVariants.color);
+                updateButtonState();
+            }
+        });
+        
+        // Handle size selection  
+        $('input[name="SHOE SIZE"]').on('change', function() {
+            if (this.checked) {
+                selectedVariants.size = $(this).val();
+                console.log('Size selected:', selectedVariants.size);
+                updateButtonState();
+                enableAddToCartButton();
+            }
+        });
+        
+        // Handle pack/quantity selection
+        $('input[name="quantity"]').on('change', function() {
+            if (this.checked) {
+                selectedVariants.pack = parseInt($(this).val());
+                console.log('Pack selected:', selectedVariants.pack);
+                updatePriceDisplay();
+                updateButtonState();
+            }
+        });
+        
+        // Handle add to cart button click
+        $('#ProductSubmitButton-template--25105630658893__main').on('click', function(e) {
+            e.preventDefault();
+            handleAddToCart();
+        });
+        
+        // Handle disabled button clicks (shake effect)
+        $(document).on('click', '.product-form__buttons.disabled', function(e) {
+            e.preventDefault();
+            scrollToSizeSelection();
+            shakeButton();
+        });
+    }
+    
+    function updateButtonState() {
+        const $button = $('#ProductSubmitButton-template--25105630658893__main');
+        const $buttonContainer = $('.product-form__buttons');
+        const $buttonText = $('.main-atc__label__text');
+        
+        if (selectedVariants.size) {
+            // Enable button
+            $buttonContainer.removeClass('disabled');
+            $buttonText.text('Add to Cart');
+        } else {
+            // Keep button disabled
+            $buttonContainer.addClass('disabled');
+            $buttonText.text('Select SHOE SIZE');
+        }
+    }
+    
+    function enableAddToCartButton() {
+        const $buttonContainer = $('.product-form__buttons');
+        const $stickyButton = $('.sticky-atc__button');
+        const $buttonText = $('.main-atc__label__text');
+        const $stickyButtonText = $('.sticky-atc__button button span:first-child');
+        
+        $buttonContainer.removeClass('disabled');
+        $stickyButton.removeClass('disabled');
+        $buttonText.text('Add to Cart');
+        $stickyButtonText.text('Add to Cart');
+    }
+    
+    function updatePriceDisplay() {
+        const packQuantity = selectedVariants.pack;
+        const price = CONFIG.prices[packQuantity];
+        
+        if (price) {
+            // Update main price display
+            $('.main-price').text(`${CONFIG.currency}${price.toFixed(2)}`);
+            
+            // Update variant price display if it exists
+            $('.price-item--sale').text(`${CONFIG.currency}${price.toFixed(2)}`);
+        }
+    }
+    
+    function updateQuantityBreakPrices() {
+        // Update the quantity break prices to match our config
+        Object.keys(CONFIG.prices).forEach(quantity => {
+            const price = CONFIG.prices[quantity];
+            const $quantityBreak = $(`input[value="${quantity}"]`).next('label');
+            
+            // Update price in quantity break
+            $quantityBreak.find('.quantity-break__price span').text(`${CONFIG.currency}${price.toFixed(2)}`);
+            
+            // Calculate and update savings (assuming original price of £42)
+            const originalPrice = 42.00;
+            const totalSavings = (originalPrice * quantity) - (price * quantity);
+            $quantityBreak.find('.quantity-break__caption span').text(`${CONFIG.currency}${totalSavings.toFixed(2)}`);
+        });
+    }
+    
+    function generateRedirectKey() {
+        // Extract size info for key generation
+        const sizeValue = selectedVariants.size || '';
+        let sizeKey = '';
+        
+        // Extract UK size from the size string (e.g., "M 5 / W 6 | UK 4 | EU 35-36" -> "uk4")
+        const ukMatch = sizeValue.match(/UK (\d+)/);
+        if (ukMatch) {
+            sizeKey = `uk${ukMatch[1]}`;
+        }
+        
+        const colorKey = selectedVariants.color ? selectedVariants.color.toLowerCase() : '';
+        const packKey = selectedVariants.pack || '';
+        
+        return `${colorKey}-${sizeKey}-${packKey}`;
+    }
+    
+    function handleAddToCart() {
+        // Check if all required variants are selected
+        if (!selectedVariants.size) {
+            scrollToSizeSelection();
+            shakeButton();
+            return;
+        }
+        
+        // Generate redirect key
+        const redirectKey = generateRedirectKey();
+        console.log('Redirect key:', redirectKey);
+        console.log('Selected variants:', selectedVariants);
+        
+        // Get redirect URL
+        let redirectUrl = CONFIG.redirectUrls[redirectKey] || CONFIG.redirectUrls.default;
+        
+        // Add query parameters with variant info
+        const params = new URLSearchParams({
+            color: selectedVariants.color,
+            size: selectedVariants.size,
+            pack: selectedVariants.pack,
+            price: CONFIG.prices[selectedVariants.pack]
+        });
+        
+        redirectUrl += (redirectUrl.includes('?') ? '&' : '?') + params.toString();
+        
+        console.log('Redirecting to:', redirectUrl);
+        
+        // Show loading state
+        showLoadingState();
+        
+        // Redirect after short delay
+        setTimeout(() => {
+            window.location.href = redirectUrl;
+        }, 500);
+    }
+    
+    function showLoadingState() {
+        const $button = $('#ProductSubmitButton-template--25105630658893__main');
+        const $spinner = $button.find('.loading-overlay__spinner');
+        const $buttonText = $('.main-atc__label__text');
+        
+        $buttonText.text('Adding to Cart...');
+        $spinner.removeClass('hidden');
+    }
+    
+    function scrollToSizeSelection() {
+        $('html, body').animate({
+            scrollTop: $('variant-selects').offset()?.top - 70 || 0
+        }, 200);
+    }
+    
+    function shakeButton() {
+        const pills = document.querySelectorAll('.custom-pills label');
+        pills.forEach(pill => {
+            pill.classList.add('glowing');
+        });
+        
+        setTimeout(() => {
+            pills.forEach(pill => {
+                pill.classList.remove('glowing');
+            });
+        }, 4000);
+    }
+    
+    // Add CSS for loading and glowing effects
+    function addCustomStyles() {
+        const styles = `
+            <style>
+                .custom-pills label.glowing {
+                    animation: glow 1s ease-in-out infinite alternate;
+                    border: 2px solid #ff6b35;
+                }
+                
+                @keyframes glow {
+                    from { box-shadow: 0 0 5px #ff6b35; }
+                    to { box-shadow: 0 0 20px #ff6b35; }
+                }
+                
+                .loading-overlay__spinner {
+                    display: inline-block;
+                    width: 20px;
+                    height: 20px;
+                    margin-left: 10px;
+                }
+                
+                .loading-overlay__spinner.hidden {
+                    display: none;
+                }
+            </style>
+        `;
+        $('head').append(styles);
+    }
+    
+    // Initialize styles
+    addCustomStyles();
+    
+    // Expose functions for debugging
+    window.ProductFormHandler = {
+        getSelectedVariants: () => selectedVariants,
+        updatePrices: updateQuantityBreakPrices,
+        generateKey: generateRedirectKey,
+        config: CONFIG
+    };
+    
+})(jQuery);
+
+// Additional configuration helper
+function addRedirectUrl(color, size, pack, url) {
+    const key = `${color.toLowerCase()}-${size.toLowerCase()}-${pack}`;
+    window.ProductFormHandler.config.redirectUrls[key] = url;
+}
+  
+    </script>
+
  
 </html>
